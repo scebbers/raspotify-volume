@@ -1,8 +1,17 @@
-FROM resin/rpi-raspbian
+# FROM resin/rpi-raspbian
+FROM balenalib/rpi-raspbian
 
-RUN apt-get update
-RUN apt-get install alsa-utils libasound2-plugin-equal gettext -y
-RUN curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
+RUN apt-get update && \
+    apt-get -y install alsa-utils libasound2-plugin-equal gettext curl apt-transport-https && \
+    update-ca-certificates --fresh && \
+    curl -sSL https://dtcooper.github.io/raspotify/key.asc | sudo apt-key add -v - && \
+    echo 'deb https://dtcooper.github.io/raspotify raspotify main' | sudo tee /etc/apt/sources.list.d/raspotify.list && \
+    sudo apt-get update && \
+    sudo apt-get -y install raspotify && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# RUN curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
 
 ENV SPOTIFY_NAME RaspotifySpeaker
 ENV BACKEND_NAME 'alsa'
@@ -12,8 +21,8 @@ ENV ALSA_SOUND_LEVEL '100%'
 ENV VERBOSE 'false'
 ENV EQUALIZATION ''
 
-ADD /asound.conf /
-ADD /equalizer.sh /
+COPY /asound.conf /
+COPY /equalizer.sh /
 
-ADD /startup.sh /
-CMD /startup.sh
+COPY /startup.sh /
+ENTRYPOINT /startup.sh
