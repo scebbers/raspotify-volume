@@ -16,28 +16,10 @@ For more info on configuring your Raspberry Pi for this to work, go to https://g
 
 ## Usage
 
-* Create file docker-compose.yml
-
-```yml
-version: "3.3"
-services:
-  rpi-spotify:
-    image: flaviostutz/rpi-spotify
-    network_mode: host
-    restart: always
-    devices:
-      - /dev/snd:/dev/snd
-    environment:
-      - SPOTIFY_NAME=MyHouse
-      - EQUALIZATION=rock
-```
-
-* Run ```docker-compose up -d```
-
+* Download file docker-compose.yaml
+* Run `docker-compose up -d`
 * Open Spotify App and click on a speaker icon (Connect to a device)
-
-* Select the speaker "MyHouse"
-
+* Select the speaker "RaspotifySpeaker"
 * Enjoy!
 
 
@@ -55,16 +37,6 @@ services:
   * profile names: flat, classical, club, dance, bass, treble, live, party, pop, rock, techno
   * bins example: "90 87 87 82 80 80 82 83 91 95"
   * if you wish to interactively test the best equalization parameters, execute ```docker-compose exec rpi-spotify alsamixer -D equal```. On the next screen play with each equalization params, get the desired bin values and set this ENV parameter accordingly as in the example above
-
-## Development
-
-Auto build doesn't work on Docker Hub because it is a cross compilation on RPI. You have to build the image locally and push it manually
-
-```shell
-docker-compose build
-docker login
-docker push flaviostutz/rpi-spotify
-```
 
 ## Screenshots
 
