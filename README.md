@@ -1,5 +1,5 @@
-[![](https://images.microbadger.com/badges/version/flaviostutz/rpi-spotify.svg)](https://microbadger.com/images/flaviostutz/rpi-spotify "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/flaviostutz/rpi-spotify.svg)](https://microbadger.com/images/flaviostutz/rpi-spotify "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/derkades/raspotify.svg)](https://microbadger.com/images/derkades/raspotify "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/derkades/raspotify.svg)](https://microbadger.com/images/derkades/raspotify "Get your own image badge on microbadger.com")
 
 You can use this container to create a Spotify Speaker at your home, but you must have a Spotify Premium account.
 
